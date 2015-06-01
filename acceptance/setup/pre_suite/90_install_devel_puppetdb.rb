@@ -10,6 +10,8 @@ step "Install development build of PuppetDB on the PuppetDB server" do
       if (test_config[:database] == :postgres)
         install_postgres(database)
       end
+      # TODO: fix me once merged and ezbake 0.3.8 is released
+      ezbake_dev_build("git@github.com:kbarber/ezbake.git", "ticket/master/pdb-1455")
       install_puppetdb_via_rake(database)
       start_puppetdb(database)
       install_puppetdb_termini_via_rake(master, database)
